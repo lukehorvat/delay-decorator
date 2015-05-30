@@ -1,9 +1,17 @@
 {
   "name": "delay-decorator",
   "version": "0.0.0",
-  "description": "",
+  "description": "An ES7 decorator for delaying function calls.",
   "author": "Luke Horvat",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lukehorvat/delay-decorator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lukehorvat/delay-decorator/issues"
+  },
+  "main": "./compiled/index.js",
   "scripts": {
     "build": "babel uncompiled --out-dir compiled --optional es7.decorators",
     "pretest": "npm run build",
@@ -15,7 +23,16 @@
     "mocha": "2.1.0",
     "should": "4.6.3"
   },
+  "engines": {
+    "node": ">= 0.10.0"
+  },
   "keywords": [
-    "decorator"
+    "decorator",
+    "annotation",
+    "es7",
+    "delay",
+    "timeout",
+    "timer",
+    "async"
   ]
 }
