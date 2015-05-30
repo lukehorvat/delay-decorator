@@ -7,6 +7,10 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = function () {
   var milliseconds = arguments[0] === undefined ? 0 : arguments[0];
 
+  if (isNaN(milliseconds)) {
+    throw new Error("Non-numeric delay milliseconds specified.");
+  }
+
   return function (target, name, descriptor) {
     var func = descriptor.value;
 

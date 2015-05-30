@@ -1,6 +1,15 @@
 import delay from "./";
 
 describe("@delay()", () => {
+  it("should throw an error for non-numeric delay milliseconds", () => {
+    (function() {
+      class Dog {
+        @delay("ABC")
+        makeNoise() { return "Woof!" }
+      }
+    }).should.throw("Non-numeric delay milliseconds specified.");
+  });
+
   it("should return a Promise resolving the function's return value", done => {
     class Dog {
       @delay(10)

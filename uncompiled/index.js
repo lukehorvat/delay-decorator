@@ -1,4 +1,8 @@
 export default (milliseconds=0) => {
+  if (isNaN(milliseconds)) {
+    throw new Error("Non-numeric delay milliseconds specified.");
+  }
+
   return (target, name, descriptor) => {
     let func = descriptor.value;
 

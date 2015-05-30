@@ -11,6 +11,26 @@ var _ = require("./");
 var _2 = _interopRequireDefault(_);
 
 describe("@delay()", function () {
+  it("should throw an error for non-numeric delay milliseconds", function () {
+    (function () {
+      var Dog = (function () {
+        function Dog() {
+          _classCallCheck(this, Dog);
+        }
+
+        _createDecoratedClass(Dog, [{
+          key: "makeNoise",
+          decorators: [(0, _2["default"])("ABC")],
+          value: function makeNoise() {
+            return "Woof!";
+          }
+        }]);
+
+        return Dog;
+      })();
+    }).should["throw"]("Non-numeric delay milliseconds specified.");
+  });
+
   it("should return a Promise resolving the function's return value", function (done) {
     var Dog = (function () {
       function Dog() {
