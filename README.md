@@ -1,4 +1,4 @@
-# delay-decorator
+# delay-decorator [![NPM version](http://img.shields.io/npm/v/delay-decorator.svg?style=flat-square)](https://www.npmjs.org/package/delay-decorator) [![Build status](http://img.shields.io/travis/lukehorvat/delay-decorator.svg?style=flat-square)](https://travis-ci.org/lukehorvat/delay-decorator)
 
 An ES7 decorator for delaying function calls.
 
