@@ -1,0 +1,17 @@
+{
+  "name": "delay-decorator",
+  "version": "0.0.0",
+  "description": "",
+  "author": "Luke Horvat",
+  "license": "MIT",
+  "scripts": {
+    "build": "babel uncompiled --out-dir compiled --optional es7.decorators"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "babel": "5.4.7"
+  },
+  "keywords": [
+    "decorator"
+  ]
+}
