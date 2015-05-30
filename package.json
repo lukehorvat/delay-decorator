@@ -5,11 +5,15 @@
   "author": "Luke Horvat",
   "license": "MIT",
   "scripts": {
-    "build": "babel uncompiled --out-dir compiled --optional es7.decorators"
+    "build": "babel uncompiled --out-dir compiled --optional es7.decorators",
+    "pretest": "npm run build",
+    "test": "mocha compiled/test.js --require should"
   },
   "dependencies": {},
   "devDependencies": {
-    "babel": "5.4.7"
+    "babel": "5.4.7",
+    "mocha": "2.1.0",
+    "should": "4.6.3"
   },
   "keywords": [
     "decorator"
