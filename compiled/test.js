@@ -48,10 +48,34 @@ describe("@delay()", function () {
       return Dog;
     })();
 
-    var promise = new Dog().makeNoise();
+    var dog = new Dog();
+    var promise = dog.makeNoise();
     promise.should.be.an["instanceof"](Promise);
     promise.then(function (noise) {
       noise.should.be.exactly("Woof!");
+    }).then(done)["catch"](done);
+  });
+
+  it("should leave the function's bound value of 'this' intact", function (done) {
+    var Obj = (function () {
+      function Obj() {
+        _classCallCheck(this, Obj);
+      }
+
+      _createDecoratedClass(Obj, [{
+        key: "self",
+        decorators: [(0, _2["default"])(10)],
+        value: function self() {
+          return this;
+        }
+      }]);
+
+      return Obj;
+    })();
+
+    var obj = new Obj();
+    obj.self().then(function (self) {
+      self.should.equal(obj);
     }).then(done)["catch"](done);
   });
 });

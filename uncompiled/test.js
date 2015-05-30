@@ -16,8 +16,19 @@ describe("@delay()", () => {
       makeNoise() { return "Woof!" }
     }
 
-    let promise = new Dog().makeNoise();
+    let dog = new Dog();
+    let promise = dog.makeNoise();
     promise.should.be.an.instanceof(Promise);
     promise.then(noise => { noise.should.be.exactly("Woof!") }).then(done).catch(done);
+  });
+
+  it("should leave the function's bound value of 'this' intact", done => {
+    class Obj {
+      @delay(10)
+      self() { return this }
+    }
+
+    let obj = new Obj();
+    obj.self().then(self => { self.should.equal(obj) }).then(done).catch(done);
   });
 });

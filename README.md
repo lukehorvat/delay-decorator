@@ -22,6 +22,7 @@ class Dog {
   makeNoise() { return "Woof!" }
 }
 
-let promise = new Dog().makeNoise();
+let dog = new Dog();
+let promise = dog.makeNoise();
 promise.then(noise => console.log(noise)); // Print "Woof!" after 2 seconds.
 ```
