@@ -11,6 +11,10 @@ exports["default"] = function () {
     throw new Error("Non-numeric delay milliseconds specified.");
   }
 
+  if (milliseconds < 0) {
+    throw new Error("Negative delay milliseconds specified.");
+  }
+
   return function (target, name, descriptor) {
     var func = descriptor.value;
 

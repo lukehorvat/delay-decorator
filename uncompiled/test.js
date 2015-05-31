@@ -10,6 +10,15 @@ describe("@delay()", () => {
     }).should.throw("Non-numeric delay milliseconds specified.");
   });
 
+  it("should throw an error for negative delay milliseconds", () => {
+    (function() {
+      class Dog {
+        @delay(-1)
+        makeNoise() { return "Woof!" }
+      }
+    }).should.throw("Negative delay milliseconds specified.");
+  });
+
   it("should return a Promise resolving the function's return value", done => {
     class Dog {
       @delay(10)

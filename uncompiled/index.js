@@ -3,6 +3,10 @@ export default (milliseconds=0) => {
     throw new Error("Non-numeric delay milliseconds specified.");
   }
 
+  if (milliseconds < 0) {
+    throw new Error("Negative delay milliseconds specified.");
+  }
+
   return (target, name, descriptor) => {
     let func = descriptor.value;
 

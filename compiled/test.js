@@ -31,6 +31,26 @@ describe("@delay()", function () {
     }).should["throw"]("Non-numeric delay milliseconds specified.");
   });
 
+  it("should throw an error for negative delay milliseconds", function () {
+    (function () {
+      var Dog = (function () {
+        function Dog() {
+          _classCallCheck(this, Dog);
+        }
+
+        _createDecoratedClass(Dog, [{
+          key: "makeNoise",
+          decorators: [(0, _2["default"])(-1)],
+          value: function makeNoise() {
+            return "Woof!";
+          }
+        }]);
+
+        return Dog;
+      })();
+    }).should["throw"]("Negative delay milliseconds specified.");
+  });
+
   it("should return a Promise resolving the function's return value", function (done) {
     var Dog = (function () {
       function Dog() {
