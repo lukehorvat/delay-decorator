@@ -76,6 +76,30 @@ describe("@delay()", function () {
     }).then(done)["catch"](done);
   });
 
+  it("should delay the function call for the specified number of milliseconds", function (done) {
+    var Dog = (function () {
+      function Dog() {
+        _classCallCheck(this, Dog);
+      }
+
+      _createDecoratedClass(Dog, [{
+        key: "makeNoise",
+        decorators: [(0, _2["default"])(1000)],
+        value: function makeNoise() {
+          return "Woof!";
+        }
+      }]);
+
+      return Dog;
+    })();
+
+    var dog = new Dog();
+    var start = new Date();
+    dog.makeNoise().then(function () {
+      (new Date() - start).should.not.be.below(1000);
+    }).then(done)["catch"](done);
+  });
+
   it("should leave the function's bound value of 'this' intact", function (done) {
     var Obj = (function () {
       function Obj() {

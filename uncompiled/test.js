@@ -31,6 +31,17 @@ describe("@delay()", () => {
     promise.then(noise => { noise.should.be.exactly("Woof!") }).then(done).catch(done);
   });
 
+  it("should delay the function call for the specified number of milliseconds", done => {
+    class Dog {
+      @delay(1000)
+      makeNoise() { return "Woof!" }
+    }
+
+    let dog = new Dog();
+    let start = new Date();
+    dog.makeNoise().then(() => { (new Date() - start).should.not.be.below(1000) }).then(done).catch(done);
+  });
+
   it("should leave the function's bound value of 'this' intact", done => {
     class Obj {
       @delay(10)
