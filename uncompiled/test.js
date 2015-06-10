@@ -19,6 +19,15 @@ describe("@delay()", () => {
     }).should.throw("Negative delay milliseconds specified.");
   });
 
+  it("should throw an error for class decorations", () => {
+    (function() {
+      @delay(10)
+      class Dog {
+        makeNoise() { return "Woof!" }
+      }
+    }).should.throw("Method not defined. Did you decorate a class by mistake?");
+  });
+
   it("should return a Promise resolving the function's return value", done => {
     class Dog {
       @delay(10)

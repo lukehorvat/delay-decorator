@@ -16,6 +16,10 @@ exports["default"] = function () {
   }
 
   return function (target, name, descriptor) {
+    if (!descriptor) {
+      throw new Error("Method not defined. Did you decorate a class by mistake?");
+    }
+
     var func = descriptor.value;
 
     descriptor.value = function () {

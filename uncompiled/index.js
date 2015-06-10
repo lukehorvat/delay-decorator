@@ -8,6 +8,10 @@ export default (milliseconds=0) => {
   }
 
   return (target, name, descriptor) => {
+    if (!descriptor) {
+      throw new Error("Method not defined. Did you decorate a class by mistake?");
+    }
+
     let func = descriptor.value;
 
     descriptor.value = function(...args) {

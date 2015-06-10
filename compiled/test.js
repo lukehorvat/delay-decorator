@@ -1,5 +1,7 @@
 "use strict";
 
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
 var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === "function") { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError("The decorator for method " + descriptor.key + " is of the invalid type " + typeof decorator); } } if (descriptor.initializer !== undefined) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -49,6 +51,28 @@ describe("@delay()", function () {
         return Dog;
       })();
     }).should["throw"]("Negative delay milliseconds specified.");
+  });
+
+  it("should throw an error for class decorations", function () {
+    (function () {
+      var Dog = (function () {
+        function Dog() {
+          _classCallCheck(this, _Dog);
+        }
+
+        var _Dog = Dog;
+
+        _createClass(_Dog, [{
+          key: "makeNoise",
+          value: function makeNoise() {
+            return "Woof!";
+          }
+        }]);
+
+        Dog = (0, _2["default"])(10)(Dog) || Dog;
+        return Dog;
+      })();
+    }).should["throw"]("Method not defined. Did you decorate a class by mistake?");
   });
 
   it("should return a Promise resolving the function's return value", function (done) {
