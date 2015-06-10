@@ -72,7 +72,7 @@ describe("@delay()", function () {
         Dog = (0, _2["default"])(10)(Dog) || Dog;
         return Dog;
       })();
-    }).should["throw"]("Method not defined. Did you decorate a class by mistake?");
+    }).should["throw"]("Property not defined. Did you decorate a class by mistake?");
   });
 
   it("should return a Promise resolving the function's return value", function (done) {

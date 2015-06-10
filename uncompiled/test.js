@@ -25,7 +25,7 @@ describe("@delay()", () => {
       class Dog {
         makeNoise() { return "Woof!" }
       }
-    }).should.throw("Method not defined. Did you decorate a class by mistake?");
+    }).should.throw("Property not defined. Did you decorate a class by mistake?");
   });
 
   it("should return a Promise resolving the function's return value", done => {

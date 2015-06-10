@@ -17,10 +17,10 @@ exports["default"] = function () {
 
   return function (target, name, descriptor) {
     if (!descriptor) {
-      throw new Error("Method not defined. Did you decorate a class by mistake?");
+      throw new Error("Property not defined. Did you decorate a class by mistake?");
     }
 
-    var func = descriptor.value;
+    var method = descriptor.value;
 
     descriptor.value = function () {
       var _this = this;
@@ -32,7 +32,7 @@ exports["default"] = function () {
       return new Promise(function (resolve) {
         setTimeout(resolve, milliseconds);
       }).then(function () {
-        return func.apply(_this, args);
+        return method.apply(_this, args);
       });
     };
   };
