@@ -31,7 +31,7 @@ describe("@delay()", () => {
     promise.then(noise => { noise.should.be.exactly("Woof!") }).then(done).catch(done);
   });
 
-  it("should delay the function call for the specified number of milliseconds", done => {
+  it("should delay the function call for the specified milliseconds", done => {
     class Dog {
       @delay(1000)
       makeNoise() { return "Woof!" }

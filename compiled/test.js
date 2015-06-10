@@ -76,7 +76,7 @@ describe("@delay()", function () {
     }).then(done)["catch"](done);
   });
 
-  it("should delay the function call for the specified number of milliseconds", function (done) {
+  it("should delay the function call for the specified milliseconds", function (done) {
     var Dog = (function () {
       function Dog() {
         _classCallCheck(this, Dog);
