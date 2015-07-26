@@ -53,7 +53,7 @@ describe("@delay()", function () {
     }).should["throw"]("Negative delay milliseconds specified.");
   });
 
-  it("should throw an error for class decorations", function () {
+  it("should throw an error when applied to a class declaration", function () {
     (function () {
       var Dog = (function () {
         function Dog() {
@@ -71,7 +71,7 @@ describe("@delay()", function () {
         Dog = (0, _2["default"])(10)(Dog) || Dog;
         return Dog;
       })();
-    }).should["throw"]("Property not defined. Did you decorate a class by mistake?");
+    }).should["throw"]("Decorator must be applied to a supported declaration type.");
   });
 
   it("should return a Promise resolving the function's return value", function (done) {

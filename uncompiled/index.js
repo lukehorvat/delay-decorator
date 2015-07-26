@@ -1,3 +1,5 @@
+import {DecoratorUtils} from "decorator-utils";
+
 export default (milliseconds=0) => {
   if (isNaN(milliseconds)) {
     throw new Error("Non-numeric delay milliseconds specified.");
@@ -7,11 +9,12 @@ export default (milliseconds=0) => {
     throw new Error("Negative delay milliseconds specified.");
   }
 
-  return (target, name, descriptor) => {
-    if (!descriptor) {
-      throw new Error("Property not defined. Did you decorate a class by mistake?");
-    }
-
+  return DecoratorUtils.createDecorator([
+    DecoratorUtils.declarationTypes.CLASS_METHOD,
+    DecoratorUtils.declarationTypes.CLASS_ACCESSOR,
+    DecoratorUtils.declarationTypes.OBJECT_LITERAL_METHOD,
+    DecoratorUtils.declarationTypes.OBJECT_LITERAL_ACCESSOR
+  ], (target, name, descriptor) => {
     let method = descriptor.value;
 
     descriptor.value = function(...args) {
@@ -21,5 +24,5 @@ export default (milliseconds=0) => {
         return method.apply(this, args);
       });
     };
-  };
+  });
 };

@@ -4,6 +4,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _decoratorUtils = require("decorator-utils");
+
 exports["default"] = function () {
   var milliseconds = arguments.length <= 0 || arguments[0] === undefined ? 0 : arguments[0];
 
@@ -15,11 +17,7 @@ exports["default"] = function () {
     throw new Error("Negative delay milliseconds specified.");
   }
 
-  return function (target, name, descriptor) {
-    if (!descriptor) {
-      throw new Error("Property not defined. Did you decorate a class by mistake?");
-    }
-
+  return _decoratorUtils.DecoratorUtils.createDecorator([_decoratorUtils.DecoratorUtils.declarationTypes.CLASS_METHOD, _decoratorUtils.DecoratorUtils.declarationTypes.CLASS_ACCESSOR, _decoratorUtils.DecoratorUtils.declarationTypes.OBJECT_LITERAL_METHOD, _decoratorUtils.DecoratorUtils.declarationTypes.OBJECT_LITERAL_ACCESSOR], function (target, name, descriptor) {
     var method = descriptor.value;
 
     descriptor.value = function () {
@@ -35,7 +33,7 @@ exports["default"] = function () {
         return method.apply(_this, args);
       });
     };
-  };
+  });
 };
 
 module.exports = exports["default"];
