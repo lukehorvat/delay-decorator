@@ -1,6 +1,6 @@
 {
   "name": "delay-decorator",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "An ES7 decorator for delaying function calls.",
   "author": "Luke Horvat",
   "license": "MIT",
