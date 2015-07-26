@@ -21,10 +21,10 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "babel": "5.5.6",
-    "husky": "0.8.1",
+    "babel": "5.8.5",
+    "husky": "0.9.1",
     "mocha": "2.2.5",
-    "should": "6.0.3"
+    "should": "7.0.2"
   },
   "engines": {
     "node": ">= 0.12.0"

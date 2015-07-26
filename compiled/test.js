@@ -60,15 +60,14 @@ describe("@delay()", function () {
           _classCallCheck(this, _Dog);
         }
 
-        var _Dog = Dog;
-
-        _createClass(_Dog, [{
+        _createClass(Dog, [{
           key: "makeNoise",
           value: function makeNoise() {
             return "Woof!";
           }
         }]);
 
+        var _Dog = Dog;
         Dog = (0, _2["default"])(10)(Dog) || Dog;
         return Dog;
       })();

@@ -2,7 +2,7 @@ import delay from "./";
 
 describe("@delay()", () => {
   it("should throw an error for non-numeric delay milliseconds", () => {
-    (function() {
+    (() => {
       class Dog {
         @delay("ABC")
         makeNoise() { return "Woof!" }
@@ -11,7 +11,7 @@ describe("@delay()", () => {
   });
 
   it("should throw an error for negative delay milliseconds", () => {
-    (function() {
+    (() => {
       class Dog {
         @delay(-1)
         makeNoise() { return "Woof!" }
@@ -20,7 +20,7 @@ describe("@delay()", () => {
   });
 
   it("should throw an error for class decorations", () => {
-    (function() {
+    (() => {
       @delay(10)
       class Dog {
         makeNoise() { return "Woof!" }
