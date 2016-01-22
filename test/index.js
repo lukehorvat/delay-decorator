@@ -1,4 +1,5 @@
-import delay from "./";
+import should from "should";
+import delay from "../lib";
 
 describe("@delay()", () => {
   it("should throw an error for non-numeric delay milliseconds", () => {
